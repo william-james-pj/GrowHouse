@@ -1,13 +1,13 @@
 enum size {
   "xxs" = "10px",
-  "xs" = "12px", 
-  "sm" = "14px", 
-  "normal" = "16px", 
-  "md" = "20px", 
-  "lg" = "22px", 
-  "xl" = "28px", 
-  "xxl" = "34px",
-};
+  "xs" = "12px",
+  "sm" = "14px",
+  "normal" = "16px",
+  "md" = "18px",
+  "lg" = "20px",
+  "xl" = "22px",
+  "xxl" = "24px",
+}
 
 const type = {
   text400: "Inter_400Regular",
