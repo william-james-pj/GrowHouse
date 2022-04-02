@@ -1,11 +1,13 @@
 import React from "react";
 
+import { Header } from "../../components/Header";
+
 import * as S from "./styles";
 
 export function MyPlants() {
   return (
     <S.Wrapper>
-      <S.Title>MyPlnats</S.Title>
+      <Header title={"Minhas plantas"} />
     </S.Wrapper>
   );
 }

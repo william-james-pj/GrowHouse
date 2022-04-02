@@ -1,14 +1,10 @@
 import styled from "styled-components/native";
-import { fonts } from "../../styles/fonts";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
+// import { fonts } from "../../styles/fonts";
 
 export const Wrapper = styled.View`
   background: ${(props) => props.theme.colors.background};
   flex: 1;
-  padding: 32px 16px 32px 16px;
-`;
-
-export const Title = styled.Text`
-  color: ${(props) => props.theme.colors.primary};
-  font-size: ${fonts.size.xxl};
-  font-family: ${fonts.type.text700};
+  padding: 0px 16px 32px 16px;
+  padding-top: ${`${getStatusBarHeight() + 32}px`};
 `;

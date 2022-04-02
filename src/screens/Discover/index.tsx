@@ -1,11 +1,13 @@
 import React from "react";
 
+import { Header } from "../../components/Header";
+
 import * as S from "./styles";
 
 export function Discover() {
   return (
     <S.Wrapper>
-      <S.Title>Discober</S.Title>
+      <Header title={"Descubra novas plantas"} />
     </S.Wrapper>
   );
 }
