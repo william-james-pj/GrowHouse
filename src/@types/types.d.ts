@@ -8,9 +8,16 @@ type RootStackParamListLogout = {
 
 type ScreenNavigationProp = NativeStackNavigationProp<RootStackParamListLogout>;
 
-type RootStackParamListLogged = {
-  Home: undefined;
-  Setting: undefined;
+type BottomTabStackParamList = {
+  BottomTab: undefined;
+};
+
+type MyPlantStackParamList = {
+  MyPlants: undefined;
+};
+
+type DiscoverParamList = {
+  Discover: undefined;
 };
 
 type UserType = {
