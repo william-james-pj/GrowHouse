@@ -28,6 +28,15 @@ export const SubTitle = styled.Text`
   text-align: center;
 `;
 
+export const TextFogot = styled.Text`
+  color: ${(props) => props.theme.colors.disabled};
+  font-size: ${fonts.size.sm};
+  font-family: ${fonts.type.text700};
+  text-align: right;
+  width: 95%;
+  margin-top: 16px;
+`;
+
 export const Form = styled.View`
   width: 100%;
   overflow: hidden;
@@ -44,7 +53,6 @@ export const Footer = styled.View`
   width: 100%;
   justify-content: flex-end;
 `;
-
 export const Row = styled.View`
   flex-direction: row;
   align-items: center;

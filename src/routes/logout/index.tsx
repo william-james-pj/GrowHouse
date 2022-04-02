@@ -6,7 +6,7 @@ import {
 } from "@react-navigation/stack";
 
 import { Welcome } from "../../screens/Welcome";
-// import { Login } from "../../screens/Login";
+import { Login } from "../../screens/Login";
 import { SignUp } from "../../screens/SignUp";
 
 import { RootStackParamListLogout } from "../../@types/types";
@@ -24,7 +24,7 @@ export function Logout() {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen name="Login" component={Welcome} />
+      <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="SignUp" component={SignUp} />
     </Stack.Navigator>
   );
