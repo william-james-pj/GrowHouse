@@ -4,7 +4,6 @@ import { fonts } from "../../styles/fonts";
 export const Wrapper = styled.View`
   background: ${(props) => props.theme.colors.background};
   flex: 1;
-  display: flex;
   padding: 32px 16px 32px 16px;
 `;
 
@@ -12,24 +11,31 @@ export const Header = styled.View`
   height: 90%;
   width: 100%;
   align-items: center;
-  justify-content: space-evenly;
-`;
-
-export const TextContainer = styled.View`
-  align-items: center;
 `;
 
 export const Title = styled.Text`
   color: ${(props) => props.theme.colors.primary};
   font-size: ${fonts.size.xxl};
   font-family: ${fonts.type.text700};
-  margin: 0 0 16px 0;
+  margin-bottom: 16px;
 `;
 
 export const SubTitle = styled.Text`
   color: ${(props) => props.theme.colors.disabled};
-  font-size: ${fonts.size.md};
+  font-size: ${fonts.size.sm};
   font-family: ${fonts.type.text400};
+  line-height: 20px;
+`;
+
+export const Form = styled.View`
+  width: 100%;
+  overflow: hidden;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 24px 0 32px 0;
 `;
 
 export const Footer = styled.View`

@@ -14,7 +14,7 @@ export function Welcome() {
   const usenavigation = useNavigation<ScreenNavigationProp>();
   return (
     <S.Wrapper>
-      <S.Container>
+      <S.Header>
         <MySVGImage />
         <S.TextContainer>
           <S.Title>GrowHouse</S.Title>
@@ -26,7 +26,7 @@ export function Welcome() {
           }}
           text={"Iniciar"}
         />
-      </S.Container>
+      </S.Header>
       <S.Footer>
         <S.Row>
           <S.Acoount>Já tem uma conta?</S.Acoount>
