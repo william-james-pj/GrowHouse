@@ -8,3 +8,7 @@ export const Wrapper = styled.View`
   padding: 0px 16px 32px 16px;
   padding-top: ${`${getStatusBarHeight() + 32}px`};
 `;
+
+export const Content = styled.View`
+  width: 100%;
+`;
