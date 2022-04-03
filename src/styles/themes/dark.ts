@@ -2,7 +2,7 @@ export const dark = {
   title: "dark",
   colors: {
     primary: "rgba(132, 178, 158, 1)",
-    primaryOpacity: "rgba(177, 198, 196, 1)",
+    secundary: "rgba(177, 198, 196, 1)",
 
     background: "rgba(245, 246, 248, 1)",
     card: "rgba(255, 255, 255, 1)",

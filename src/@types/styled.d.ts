@@ -5,7 +5,7 @@ declare module "styled-components" {
     title: string;
     colors: {
       primary: string;
-      primaryOpacity: string;
+      secundary: string;
 
       background: string;
       card: string;
