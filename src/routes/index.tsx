@@ -13,7 +13,7 @@ export function Routes() {
   return (
     <View style={{ flex: 1 }}>
       <NavigationContainer>
-        {!user?.id ? <BottomTabNavigator /> : ""}
+        {!user?.id ? <Logout /> : <BottomTabNavigator />}
       </NavigationContainer>
     </View>
   );

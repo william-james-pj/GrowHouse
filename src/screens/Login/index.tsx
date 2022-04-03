@@ -11,14 +11,13 @@ import { Loading } from "../../components/Loading";
 
 import { useAuth } from "../../hooks/useAuth";
 import { emailValidator } from "../../utils/emailValidator";
-import { passwordValidator } from "../../utils/passwordValidator";
 
 import { ScreenNavigationProp } from "../../@types/types";
 
 import * as S from "./styles";
 
 export function Login() {
-  const { loginWithEmailAndPassword } = useAuth();
+  const { login } = useAuth();
   const usenavigation = useNavigation<ScreenNavigationProp>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +28,7 @@ export function Login() {
       if (!email.trim().length || !password.trim().length) return;
 
       setLoading(true);
-      await loginWithEmailAndPassword(email, password);
+      await login(email, password);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -68,8 +67,6 @@ export function Login() {
                   onChangeText={setPassword}
                   value={password}
                   secureTextEntry={true}
-                  validator={passwordValidator}
-                  errorText={""}
                 />
                 <S.TextFogot>Esqueceu a senha?</S.TextFogot>
               </S.Form>
@@ -81,7 +78,8 @@ export function Login() {
                 <S.Button>
                   <BorderlessButton
                     onPress={() => {
-                      usenavigation.navigate("SignUp");
+                      // usenavigation.navigate("SignUp");
+                      console.log("AA");
                     }}
                   >
                     <S.ButtonText>Inscrever-se</S.ButtonText>

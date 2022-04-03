@@ -18,11 +18,10 @@ import { ScreenNavigationProp } from "../../@types/types";
 import * as S from "./styles";
 
 export function SignUp() {
-  const { signInWithEmailAndPassword } = useAuth();
+  const { signin } = useAuth();
   const usenavigation = useNavigation<ScreenNavigationProp>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSingUp = async () => {
@@ -30,7 +29,7 @@ export function SignUp() {
       if (!email.trim().length || !password.trim().length) return;
 
       setLoading(true);
-      // await signInWithEmailAndPassword({ email, password });
+      await signin({ email, password });
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -71,14 +70,6 @@ export function SignUp() {
                   secureTextEntry={true}
                   validator={passwordValidator}
                   errorText={"A senha deve ter pelo menos 6 caracteres"}
-                />
-                <TextInput
-                  placeholder={"Repita a senha"}
-                  onChangeText={setRepeatPassword}
-                  value={repeatPassword}
-                  secureTextEntry={true}
-                  validator={passwordValidator}
-                  errorText={""}
                 />
               </S.Form>
               <ButtonLarge onPress={handleSingUp} text={"Inscrever-se"} />
