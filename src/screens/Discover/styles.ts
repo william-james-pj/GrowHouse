@@ -8,3 +8,19 @@ export const Wrapper = styled.View`
   padding: 0px 16px 32px 16px;
   padding-top: ${`${getStatusBarHeight() + 32}px`};
 `;
+
+export const SearchContainer = styled.View`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 32px;
+`;
+
+export const SearchBarContainer = styled.View`
+  width: 80%;
+`;
+
+export const FilterContainer = styled.View`
+  width: 15%;
+`;
