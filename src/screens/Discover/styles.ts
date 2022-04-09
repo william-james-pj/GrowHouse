@@ -24,3 +24,14 @@ export const SearchBarContainer = styled.View`
 export const FilterContainer = styled.View`
   width: 15%;
 `;
+
+export const Separator = styled.View`
+  width: 100%;
+  height: 16px;
+`;
+
+export const FooterView = styled.View`
+  background: transparent;
+  width: 100%;
+  height: 40px;
+`;

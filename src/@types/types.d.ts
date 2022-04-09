@@ -27,3 +27,7 @@ type UserType = {
 type MyPlantsType = {
   id: string;
 };
+
+type DiscoverType = {
+  id: string;
+};

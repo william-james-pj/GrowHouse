@@ -2,7 +2,8 @@ import styled from "styled-components/native";
 import { fonts } from "../../styles/fonts";
 
 export const Wrapper = styled.View`
-  width: 130px;
+  width: 45%;
+  min-width: 130px;
   height: 160px;
   border-radius: 8px;
   background: ${(props) => props.theme.colors.card};
