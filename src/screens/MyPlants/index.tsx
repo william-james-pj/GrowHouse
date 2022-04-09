@@ -6,20 +6,15 @@ import { SearchBar } from "../../components/SearchBar";
 import { Filter } from "../../components/Filter";
 import { CardMyPlants } from "../../components/CardMyPlants";
 
+import { useMyPlants } from "../../hooks/useMyPlants";
+
 import { MyPlantsType } from "../../@types/types";
 
 import * as S from "./styles";
 
 export function MyPlants() {
   const [searchText, setSearchText] = useState("");
-
-  const myPlantsData: MyPlantsType[] = [
-    { id: "1" },
-    { id: "2" },
-    { id: "3" },
-    { id: "4" },
-    { id: "5" },
-  ];
+  const { myPlantsData } = useMyPlants();
 
   const flatList = useRef<FlatList<MyPlantsType>>(null);
 

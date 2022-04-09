@@ -2,6 +2,8 @@ import React from "react";
 
 import { ColorModeContext } from "./src/contexts/ColorModeContext";
 import { AuthContextProvider } from "./src/contexts/AuthContext";
+import { MyPlantsContextProvider } from "./src/contexts/MyPlantsContext";
+import { DiscoverContextProvider } from "./src/contexts/DiscoverContext";
 
 import { useFonts } from "expo-font";
 import {
@@ -31,7 +33,11 @@ export default function App() {
   return (
     <ColorModeContext>
       <AuthContextProvider>
-        <Routes />
+        <MyPlantsContextProvider>
+          <DiscoverContextProvider>
+            <Routes />
+          </DiscoverContextProvider>
+        </MyPlantsContextProvider>
       </AuthContextProvider>
     </ColorModeContext>
   );

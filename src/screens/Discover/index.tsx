@@ -6,22 +6,15 @@ import { SearchBar } from "../../components/SearchBar";
 import { Filter } from "../../components/Filter";
 import { CardDiscover } from "../../components/CardDiscover";
 
+import { useDiscover } from "../../hooks/useDiscover";
+
 import { DiscoverType } from "../../@types/types";
 
 import * as S from "./styles";
 
 export function Discover() {
   const [searchText, setSearchText] = useState("");
-
-  const discoverData: DiscoverType[] = [
-    { id: "1" },
-    { id: "2" },
-    { id: "3" },
-    { id: "4" },
-    { id: "5" },
-    { id: "6" },
-    { id: "7" },
-  ];
+  const { discoverData } = useDiscover();
 
   const flatList = useRef<FlatList<DiscoverType>>(null);
 
