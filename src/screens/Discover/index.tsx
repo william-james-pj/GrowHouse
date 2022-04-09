@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Header } from "../../components/Header";
 import { SearchBar } from "../../components/SearchBar";
 import { Filter } from "../../components/Filter";
+import { CardDiscover } from "../../components/CardDiscover";
 
 import * as S from "./styles";
 
@@ -24,6 +25,8 @@ export function Discover() {
           <Filter />
         </S.FilterContainer>
       </S.SearchContainer>
+
+      <CardDiscover />
     </S.Wrapper>
   );
 }
