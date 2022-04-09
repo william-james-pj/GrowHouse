@@ -23,3 +23,7 @@ type DiscoverParamList = {
 type UserType = {
   id: string;
 };
+
+type MyPlantsType = {
+  id: string;
+};
