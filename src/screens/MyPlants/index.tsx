@@ -22,6 +22,16 @@ export function MyPlants() {
     return <CardMyPlants />;
   };
 
+  const listEmpty = () => {
+    return (
+      <S.EmptyContainer>
+        <S.EmptyIcon />
+        <S.EmptyTitle>{"Seu jardim está vazio!"}</S.EmptyTitle>
+        <S.EmptySubTitle>{"Adicione uma nova planta"}</S.EmptySubTitle>
+      </S.EmptyContainer>
+    );
+  };
+
   return (
     <S.Wrapper>
       <Header title={"Minhas plantas"} />
@@ -47,7 +57,7 @@ export function MyPlants() {
         keyExtractor={(item) => item.id}
         ItemSeparatorComponent={() => <S.Separator></S.Separator>}
         ListFooterComponent={() => <S.FooterView></S.FooterView>}
-        // ListEmptyComponent={}
+        ListEmptyComponent={listEmpty}
       />
     </S.Wrapper>
   );
