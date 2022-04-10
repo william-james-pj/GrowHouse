@@ -78,8 +78,7 @@ export function Login() {
                 <S.Button>
                   <BorderlessButton
                     onPress={() => {
-                      // usenavigation.navigate("SignUp");
-                      console.log("AA");
+                      usenavigation.navigate("SignUp");
                     }}
                   >
                     <S.ButtonText>Inscrever-se</S.ButtonText>

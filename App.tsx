@@ -17,6 +17,7 @@ import AppLoading from "expo-app-loading";
 import { Routes } from "./src/routes";
 
 import { LogBox } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 LogBox.ignoreLogs(["Setting a timer"]);
 
 export default function App() {
@@ -35,7 +36,9 @@ export default function App() {
       <AuthContextProvider>
         <MyPlantsContextProvider>
           <DiscoverContextProvider>
-            <Routes />
+            <GestureHandlerRootView style={{ flex: 1 }}>
+              <Routes />
+            </GestureHandlerRootView>
           </DiscoverContextProvider>
         </MyPlantsContextProvider>
       </AuthContextProvider>
