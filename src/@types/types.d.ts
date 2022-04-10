@@ -18,7 +18,10 @@ type MyPlantStackParamList = {
 
 type DiscoverParamList = {
   Discover: undefined;
+  SeeDiscover: undefined;
 };
+
+type DiscoverNavigationProp = NativeStackNavigationProp<DiscoverParamList>;
 
 type UserType = {
   id: string;

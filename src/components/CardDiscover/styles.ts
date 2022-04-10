@@ -4,7 +4,7 @@ import { fonts } from "../../styles/fonts";
 export const Wrapper = styled.View`
   width: 45%;
   min-width: 130px;
-  height: 160px;
+  height: 180px;
   border-radius: 8px;
   background: ${(props) => props.theme.colors.card};
 
@@ -15,7 +15,7 @@ export const Wrapper = styled.View`
 
 export const ImageContainer = styled.View`
   width: 100%;
-  height: 60%;
+  height: 55%;
 
   background: ${(props) => props.theme.colors.primary};
 
@@ -31,7 +31,7 @@ export const Image = styled.Image`
 
 export const TextContainer = styled.View`
   width: 100%;
-  height: 40%;
+  height: 45%;
 
   display: flex;
   flex-direction: column;

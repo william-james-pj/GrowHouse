@@ -6,6 +6,7 @@ import {
 } from "@react-navigation/stack";
 
 import { Discover } from "../../screens/Discover";
+import { SeeDiscover } from "../../screens/SeeDiscover";
 
 import { DiscoverParamList } from "../../@types/types";
 
@@ -29,6 +30,11 @@ export function DiscoverStackNavigator() {
         options={{ headerShown: false }}
         name="Discover"
         component={Discover}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="SeeDiscover"
+        component={SeeDiscover}
       />
     </Stack.Navigator>
   );
