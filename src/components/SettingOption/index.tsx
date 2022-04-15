@@ -1,10 +1,12 @@
 import React from "react";
 import { RectButton } from "react-native-gesture-handler";
 
-import * as S from "./styles";
+import { ToggleSwitch } from "../ToggleSwitch";
 
 import MoonSVG from "../../assets/svg/Moon.svg";
 import ArrowRightSVG from "../../assets/svg/Arrow-right-from-bracket.svg";
+
+import * as S from "./styles";
 
 type SettingOptionType = {
   title: String;
@@ -18,6 +20,14 @@ export function SettingOption({ title, type, onPress }: SettingOptionType) {
       <S.Container>
         {type === "DarkMode" ? <MoonSVG /> : <ArrowRightSVG />}
         <S.Title>{title}</S.Title>
+
+        {type === "DarkMode" ? (
+          <S.ToggleContainer>
+            <ToggleSwitch value={false} />
+          </S.ToggleContainer>
+        ) : (
+          <S.ToggleContainer></S.ToggleContainer>
+        )}
       </S.Container>
       {type === "LogOff" ? (
         <S.Button>

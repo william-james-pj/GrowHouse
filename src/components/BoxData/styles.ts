@@ -32,6 +32,10 @@ export const Ball = styled.View`
 
 export const SwitchContainer = styled.View`
   width: 50%;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 `;
 
 export const Content = styled.View`

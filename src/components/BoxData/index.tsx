@@ -4,6 +4,8 @@ import SprinklerSVG from "../../assets/svg/Sprinkler.svg";
 import HumiditySVG from "../../assets/svg/Humidity.svg";
 import ReservoirSVG from "../../assets/svg/Reservoir.svg";
 
+import { ToggleSwitch } from "../ToggleSwitch";
+
 import * as S from "./styles";
 
 type BoxDataProps = {
@@ -27,7 +29,9 @@ export function BoxData({ type, title, Value }: BoxDataProps) {
             )}
           </S.Ball>
         </S.BallContainer>
-        <S.SwitchContainer></S.SwitchContainer>
+        <S.SwitchContainer>
+          {type === "irrigation" ? <ToggleSwitch value={true} /> : null}
+        </S.SwitchContainer>
       </S.Header>
       <S.Content>
         <S.TextContainer>

@@ -25,6 +25,16 @@ export const Title = styled.Text`
   font-size: ${fonts.size.sm};
   font-family: ${fonts.type.text400};
   margin-left: 16px;
+  width: 70%;
+`;
+
+export const ToggleContainer = styled.View`
+  height: 100%;
+  width: 20%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Button = styled.View`
