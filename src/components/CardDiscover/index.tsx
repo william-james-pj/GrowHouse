@@ -3,14 +3,22 @@ import { useNavigation } from "@react-navigation/core";
 
 import { RectButton } from "react-native-gesture-handler";
 
-import { DiscoverNavigationProp } from "../../@types/types";
+import { useDiscoverSelected } from "../../hooks/useDiscoverSelected";
+
+import { DiscoverNavigationProp, DiscoverType } from "../../@types/types";
 
 import * as S from "./styles";
 
-export function CardDiscover() {
+type CardDiscoverType = {
+  discoverItem: DiscoverType;
+};
+
+export function CardDiscover({ discoverItem }: CardDiscoverType) {
   const usenavigation = useNavigation<DiscoverNavigationProp>();
+  const { setNewDiscoverItem } = useDiscoverSelected();
 
   const buttonPress = () => {
+    setNewDiscoverItem(discoverItem);
     usenavigation.navigate("SeeDiscover");
   };
 
@@ -21,8 +29,8 @@ export function CardDiscover() {
           <S.Image source={require("../../assets/PlantaTest.png")} />
         </S.ImageContainer>
         <S.TextContainer>
-          <S.Title>Orelha de Coelho</S.Title>
-          <S.SubTitle>Opuntia microdasys</S.SubTitle>
+          <S.Title>{discoverItem.name}</S.Title>
+          <S.SubTitle>{discoverItem.scientificName}</S.SubTitle>
         </S.TextContainer>
       </RectButton>
     </S.Wrapper>

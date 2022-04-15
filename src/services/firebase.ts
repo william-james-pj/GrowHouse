@@ -1,4 +1,4 @@
-import firebase from "firebase/compat/app";
+import { initializeApp } from "firebase/app";
 
 import { getDatabase } from "firebase/database";
 import { getAuth } from "firebase/auth";
@@ -13,9 +13,9 @@ const firebaseConfig = {
   appId: process.env.FIREBASE_APP_ID,
 };
 
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-const auth = getAuth();
-const database = getDatabase();
+const auth = getAuth(app);
+const database = getDatabase(app);
 
-export { firebase, auth, database };
+export { app, auth, database };

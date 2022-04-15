@@ -75,7 +75,7 @@ export const InfoTextContainer = styled.View`
 
 export const Description = styled.Text`
   color: ${(props) => props.theme.colors.text};
-  font-size: ${fonts.size.sm};
+  font-size: ${fonts.size.xs};
   font-family: ${fonts.type.text400};
   margin: 32px 0;
 `;

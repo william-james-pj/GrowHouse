@@ -33,4 +33,14 @@ type MyPlantsType = {
 
 type DiscoverType = {
   id: string;
+  name: string;
+  scientificName: string;
+  category: string;
+  environment: string;
+  size: string;
+  description: string;
+  water: string;
+  frequency: string;
+  temperature: string;
+  lighting: string;
 };

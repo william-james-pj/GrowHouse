@@ -19,7 +19,7 @@ export function Discover() {
   const flatList = useRef<FlatList<DiscoverType>>(null);
 
   const renderRows = ({ item }: { item: DiscoverType }) => {
-    return <CardDiscover />;
+    return <CardDiscover discoverItem={item} />;
   };
 
   return (

@@ -1,6 +1,8 @@
 import React from "react";
 import { ScrollView } from "react-native";
 
+import { useDiscoverSelected } from "../../hooks/useDiscoverSelected";
+
 import { BorderlessButton } from "react-native-gesture-handler";
 import { StackScreenProps } from "@react-navigation/stack";
 
@@ -16,6 +18,7 @@ type SeeDiscoverProps = StackScreenProps<DiscoverParamList, "SeeDiscover">;
 import * as S from "./styles";
 
 export function SeeDiscover({ navigation }: SeeDiscoverProps) {
+  const { discoverItem } = useDiscoverSelected();
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <S.Wrapper>
@@ -30,8 +33,8 @@ export function SeeDiscover({ navigation }: SeeDiscoverProps) {
             </BorderlessButton>
           </S.TopBarButton>
         </S.TopBar>
-        <S.Title>Orelha de Coelho</S.Title>
-        <S.SubTitle>Opuntia microdasys</S.SubTitle>
+        <S.Title>{discoverItem?.name}</S.Title>
+        <S.SubTitle>{discoverItem?.scientificName}</S.SubTitle>
         <S.InfoContainer>
           <S.ImageContainer>
             <S.Image
@@ -40,23 +43,27 @@ export function SeeDiscover({ navigation }: SeeDiscoverProps) {
             />
           </S.ImageContainer>
           <S.InfoTextContainer>
-            <InfoBox type="category" title={"Cactos e Suculentas"} />
-            <InfoBox type="environment" title={"Exterior"} />
-            <InfoBox type="size" title={"Pequeno"} />
+            <InfoBox type="category" title={discoverItem?.category ?? ""} />
+            <InfoBox
+              type="environment"
+              title={discoverItem?.environment ?? ""}
+            />
+            <InfoBox type="size" title={discoverItem?.size ?? ""} />
           </S.InfoTextContainer>
         </S.InfoContainer>
         <S.Description style={{ lineHeight: 20 }}>
-          Lorem ipsum dolor sit amet. Non tenetur recusandae et vero iure aut
-          suscipit eaque est consequatur itaque eum nesciunt ullam 33 aperiam
-          nihil et libero aliquid.
+          {discoverItem?.description}
         </S.Description>
         <S.PropertyContainer>
-          <PropertyBox type="water" title={"250 ml"} />
-          <PropertyBox type="calendar" title={"1 / semana"} />
+          <PropertyBox type="water" title={discoverItem?.water ?? ""} />
+          <PropertyBox type="calendar" title={discoverItem?.frequency ?? ""} />
         </S.PropertyContainer>
         <S.PropertyContainer>
-          <PropertyBox type="temperature" title={"15-24 °C"} />
-          <PropertyBox type="light" title={"Baixa"} />
+          <PropertyBox
+            type="temperature"
+            title={`${discoverItem?.temperature} °C` ?? ""}
+          />
+          <PropertyBox type="light" title={discoverItem?.lighting ?? ""} />
         </S.PropertyContainer>
       </S.Wrapper>
     </ScrollView>

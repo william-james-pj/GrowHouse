@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Header } from "../../components/Header";
 import { BoxData } from "../../components/BoxData";
+
+import { useDiscover } from "../../hooks/useDiscover";
 
 import { currentTime } from "../../utils/currentTime";
 
@@ -10,6 +12,14 @@ import BellSVG from "../../assets/svg/Bell.svg";
 import * as S from "./styles";
 
 export function Home() {
+  const { loadData } = useDiscover();
+
+  useEffect(() => {
+    loadData();
+
+    return () => {};
+  }, []);
+
   return (
     <S.Wrapper>
       <Header title={currentTime()} />
