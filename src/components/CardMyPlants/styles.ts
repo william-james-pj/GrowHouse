@@ -6,11 +6,17 @@ export const Wrapper = styled.View`
   height: 120px;
   border-radius: 8px;
   background: ${(props) => props.theme.colors.card};
+  overflow: hidden;
+`;
+
+export const Row = styled.View`
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
 
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 16px;
 `;
 
 export const TextContainer = styled.View`
