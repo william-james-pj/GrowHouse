@@ -1,7 +1,8 @@
 import React, { createContext, ReactNode, useState, useEffect } from "react";
-import { database } from "../services/firebase";
+import { database, storage } from "../services/firebase";
 
-import { getDatabase, ref, child, get } from "firebase/database";
+import { ref, child, get } from "firebase/database";
+import { ref as refStorage, getDownloadURL } from "firebase/storage";
 
 import { DiscoverType } from "../@types/types";
 
@@ -21,9 +22,10 @@ export function DiscoverContextProvider(props: DiscoverContextProviderProps) {
 
   const loadData = async () => {
     let data: DiscoverType[] = [];
+    let dataWithImage: DiscoverType[] = [];
 
     const dbRef = ref(database);
-    get(child(dbRef, `Discover`))
+    await get(child(dbRef, `Discover`))
       .then((snapshot) => {
         if (!snapshot.exists()) {
           setDiscover(data);
@@ -32,6 +34,7 @@ export function DiscoverContextProvider(props: DiscoverContextProviderProps) {
 
         snapshot.forEach((element) => {
           const val = element.val();
+
           data.push({
             id: val.id,
             name: val.name,
@@ -44,14 +47,39 @@ export function DiscoverContextProvider(props: DiscoverContextProviderProps) {
             frequency: val.frequency,
             temperature: val.temperature,
             lighting: val.lighting,
+            image: val.image,
           });
         });
-
-        setDiscover(data);
       })
       .catch((error) => {
         console.error(error);
       });
+
+    await Promise.all(
+      data.map(async (element) => {
+        const url = await loadImage(element.image);
+        dataWithImage.push({
+          ...element,
+          image: url,
+        });
+      })
+    );
+
+    setDiscover(dataWithImage);
+  };
+
+  const loadImage = async (imageName: string) => {
+    const pathReference = refStorage(storage, `Discover/${imageName}`);
+    let response = "";
+    await getDownloadURL(pathReference)
+      .then((url) => {
+        response = url;
+      })
+      .catch((error) => {
+        response = "";
+      });
+
+    return response;
   };
 
   useEffect(() => {}, []);

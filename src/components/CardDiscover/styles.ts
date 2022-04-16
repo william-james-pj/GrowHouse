@@ -17,7 +17,7 @@ export const ImageContainer = styled.View`
   width: 100%;
   height: 55%;
 
-  background: ${(props) => props.theme.colors.primary};
+  background: ${(props) => props.theme.colors.secundary};
 
   display: flex;
   align-items: center;

@@ -19,6 +19,7 @@ import * as S from "./styles";
 
 export function SeeDiscover({ navigation }: SeeDiscoverProps) {
   const { discoverItem } = useDiscoverSelected();
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <S.Wrapper>
@@ -39,7 +40,7 @@ export function SeeDiscover({ navigation }: SeeDiscoverProps) {
           <S.ImageContainer>
             <S.Image
               style={{ resizeMode: "cover" }}
-              source={require("../../assets/PlantaTest.png")}
+              source={{ uri: discoverItem?.image }}
             />
           </S.ImageContainer>
           <S.InfoTextContainer>

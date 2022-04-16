@@ -51,7 +51,7 @@ export const ImageBox = styled.View`
   width: 90%;
   height: 90px;
   border-radius: 8px;
-  background: ${(props) => props.theme.colors.primary};
+  background: ${(props) => props.theme.colors.secundary};
 
   display: flex;
   align-items: center;

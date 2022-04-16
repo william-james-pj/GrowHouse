@@ -26,7 +26,7 @@ export function CardDiscover({ discoverItem }: CardDiscoverType) {
     <S.Wrapper>
       <RectButton onPress={buttonPress}>
         <S.ImageContainer>
-          <S.Image source={require("../../assets/PlantaTest.png")} />
+          <S.Image source={{ uri: discoverItem.image }} />
         </S.ImageContainer>
         <S.TextContainer>
           <S.Title>{discoverItem.name}</S.Title>

@@ -43,4 +43,5 @@ type DiscoverType = {
   frequency: string;
   temperature: string;
   lighting: string;
+  image: string;
 };
