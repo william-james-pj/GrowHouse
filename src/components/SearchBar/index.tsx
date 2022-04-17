@@ -1,4 +1,5 @@
 import React from "react";
+import { useTheme } from "styled-components";
 
 import SearchIcon from "../../assets/svg/Search.svg";
 
@@ -15,6 +16,8 @@ export function SearchBar({
   onChangeText,
   value,
 }: SearchBarProps) {
+  const theme = useTheme();
+
   const changeText = (text: string) => {
     onChangeText(text);
   };
@@ -28,7 +31,7 @@ export function SearchBar({
         onChangeText={changeText}
       />
       <S.IconContainer>
-        <SearchIcon />
+        <SearchIcon fill={theme.colors.disabled} />
       </S.IconContainer>
     </S.Wrapper>
   );

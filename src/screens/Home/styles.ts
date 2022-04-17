@@ -51,7 +51,7 @@ export const BoxTitle = styled.Text`
 `;
 
 export const BoxSubTitle = styled.Text`
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.card};
   font-size: ${fonts.size.xxs};
   font-family: ${fonts.type.text400};
   margin-top: 4px;

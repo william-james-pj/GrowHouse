@@ -1,6 +1,8 @@
 import React from "react";
 import Modal from "react-native-modal";
 
+import { useTheme } from "styled-components";
+
 import { RectButton } from "react-native-gesture-handler";
 import { BoxData } from "./Components/BoxData";
 
@@ -18,6 +20,8 @@ export function SeeMyPlant({
   isModalVisible,
   setModalVisible,
 }: SeeMyPlantProps) {
+  const theme = useTheme();
+
   const toggleModal = () => {
     setModalVisible();
   };
@@ -43,7 +47,7 @@ export function SeeMyPlant({
               <S.InfoButton>
                 <RectButton onPress={handlePress}>
                   <S.Button>
-                    <InfoBookSVG />
+                    <InfoBookSVG fill={theme.colors.card} />
                   </S.Button>
                 </RectButton>
               </S.InfoButton>

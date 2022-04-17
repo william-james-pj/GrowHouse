@@ -28,5 +28,5 @@ export const Circle = styled.View`
   height: 17px;
   border-radius: 17px;
 
-  background: ${(props) => props.theme.colors.white};
+  background: ${(props) => props.theme.colors.card};
 `;

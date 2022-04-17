@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useTheme } from "styled-components";
+
 import CalendarIcon from "../../../../assets/svg/Calendar.svg";
 import LightIcon from "../../../../assets/svg/Light.svg";
 import TemperatureIcon from "../../../../assets/svg/Temperature.svg";
@@ -13,16 +15,18 @@ type PropertyBoxProps = {
 };
 
 export function PropertyBox({ type, title }: PropertyBoxProps) {
+  const theme = useTheme();
+
   return (
     <S.Wrapper>
       {type === "calendar" ? (
-        <CalendarIcon />
+        <CalendarIcon fill={theme.colors.disabled} />
       ) : type === "light" ? (
-        <LightIcon />
+        <LightIcon fill={theme.colors.disabled} />
       ) : type === "temperature" ? (
-        <TemperatureIcon />
+        <TemperatureIcon fill={theme.colors.disabled} />
       ) : (
-        <WaterPropertyIcon />
+        <WaterPropertyIcon fill={theme.colors.disabled} />
       )}
 
       <S.TextContainer>

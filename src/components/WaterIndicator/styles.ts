@@ -4,7 +4,7 @@ import { fonts } from "../../styles/fonts";
 export const Wrapper = styled.View`
   width: 50px;
   height: 20px;
-  background: rgba(234, 246, 254, 1);
+  background: ${(props) => props.theme.colors.blueLight};
   border-radius: 8px;
 
   display: flex;
@@ -14,7 +14,7 @@ export const Wrapper = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: rgba(89, 139, 191, 1);
+  color: ${(props) => props.theme.colors.blueDark};
   font-size: ${fonts.size.xxs};
   font-family: ${fonts.type.text400};
 `;

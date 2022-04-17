@@ -6,12 +6,11 @@ import { BorderlessButton } from "react-native-gesture-handler";
 import * as S from "./styles";
 
 type ToggleSwitchProps = {
+  onPress: () => void;
   value: boolean;
 };
 
-export function ToggleSwitch({ value }: ToggleSwitchProps) {
-  const [isActive, setIsActive] = useState(value);
-
+export function ToggleSwitch({ onPress, value }: ToggleSwitchProps) {
   const styles = StyleSheet.create({
     shadowBox: {
       shadowColor: "#000",
@@ -27,7 +26,7 @@ export function ToggleSwitch({ value }: ToggleSwitchProps) {
   });
 
   const handleToggle = () => {
-    setIsActive(!isActive);
+    onPress();
   };
 
   return (
@@ -36,7 +35,7 @@ export function ToggleSwitch({ value }: ToggleSwitchProps) {
         handleToggle();
       }}
     >
-      <S.Wrapper style={styles.shadowBox} isActive={isActive}>
+      <S.Wrapper style={styles.shadowBox} isActive={value}>
         <S.Circle></S.Circle>
       </S.Wrapper>
     </BorderlessButton>

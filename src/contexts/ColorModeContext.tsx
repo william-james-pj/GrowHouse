@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useEffect, useState } from "react";
-import { Appearance } from "react-native";
+import { useColorScheme } from "react-native";
 import { DefaultTheme, ThemeProvider } from "styled-components";
 
 import themes from "../styles/themes";
@@ -16,24 +16,14 @@ type ColorContextProviderProps = {
 export const ColorContext = createContext({} as ColorContextType);
 
 export function ColorModeContext(props: ColorContextProviderProps) {
-  const defaultMode = Appearance.getColorScheme() || "light";
-  const [theme, setTheme] = useState(
-    defaultMode === "light" ? themes.light : themes.dark
-  );
+  const defaultMode = useColorScheme();
+  const [theme, setTheme] = useState(themes[defaultMode || "light"]);
 
   const toggleTheme = () => {
     setTheme(theme.title === "light" ? themes.dark : themes.light);
   };
 
-  useEffect(() => {
-    Appearance.addChangeListener(({ colorScheme }) => {
-      setTheme(colorScheme === "light" ? themes.light : themes.dark);
-    });
-    return () =>
-      Appearance.removeChangeListener(({ colorScheme }) => {
-        setTheme(colorScheme === "light" ? themes.light : themes.dark);
-      });
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <ColorContext.Provider value={{ theme, toggleTheme }}>

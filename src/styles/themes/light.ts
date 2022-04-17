@@ -12,5 +12,8 @@ export const light = {
 
     white: "#FFF",
     red: "rgba(231, 76, 60, 1)",
+
+    blueLight: "rgba(234, 246, 254, 1)",
+    blueDark: "rgba(89, 139, 191, 1)",
   },
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { ScrollView } from "react-native";
 
 import { useDiscoverSelected } from "../../hooks/useDiscoverSelected";
+import { useTheme } from "styled-components";
 
 import { BorderlessButton } from "react-native-gesture-handler";
 import { StackScreenProps } from "@react-navigation/stack";
@@ -18,6 +19,7 @@ type SeeDiscoverProps = StackScreenProps<DiscoverParamList, "SeeDiscover">;
 import * as S from "./styles";
 
 export function SeeDiscover({ navigation }: SeeDiscoverProps) {
+  const theme = useTheme();
   const { discoverItem } = useDiscoverSelected();
 
   return (
@@ -30,7 +32,7 @@ export function SeeDiscover({ navigation }: SeeDiscoverProps) {
                 navigation.goBack();
               }}
             >
-              <ArrowLeftIcon />
+              <ArrowLeftIcon fill={theme.colors.text} />
             </BorderlessButton>
           </S.TopBarButton>
         </S.TopBar>
