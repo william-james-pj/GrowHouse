@@ -63,6 +63,7 @@ export function SignUp() {
                     value={email}
                     validator={emailValidator}
                     errorText={"Por favor insira um endereço de e-mail válido"}
+                    keyboardType={"email-address"}
                   />
                   <TextInput
                     placeholder={"Senha"}

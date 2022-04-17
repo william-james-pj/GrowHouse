@@ -10,6 +10,7 @@ type TextInputProps = {
   validator?: (input: string) => boolean;
   errorText?: string;
   widhtBox?: string;
+  keyboardType?: "default" | "email-address";
 };
 
 const Valid = true;
@@ -25,6 +26,7 @@ export function TextInput({
   validator,
   errorText = "",
   widhtBox = "100%",
+  keyboardType = "default",
 }: TextInputProps) {
   const [validState, setValidState] = useState<InputState>(Pristine);
 
@@ -50,6 +52,10 @@ export function TextInput({
           onChangeText={changeText}
           secureTextEntry={secureTextEntry}
           onBlur={validate}
+          keyboardType={keyboardType}
+          autoCapitalize={
+            keyboardType === "email-address" ? "none" : "sentences"
+          }
         />
       </S.Box>
       {validState === Invalid && <S.ErrorText>{errorText}</S.ErrorText>}

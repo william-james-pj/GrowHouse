@@ -62,6 +62,7 @@ export function Login() {
                     value={email}
                     validator={emailValidator}
                     errorText={""}
+                    keyboardType={"email-address"}
                   />
                   <TextInput
                     placeholder={"Senha"}
