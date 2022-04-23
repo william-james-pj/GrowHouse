@@ -10,15 +10,18 @@ import { WaterIndicator } from "../../components/WaterIndicator";
 import InfoBookSVG from "../../assets/svg/InfoBook.svg";
 
 import * as S from "./styles";
+import { MyPlantsType } from "../../@types/types";
 
 type SeeMyPlantProps = {
   isModalVisible: boolean;
   setModalVisible: () => void;
+  plantItem: MyPlantsType;
 };
 
 export function SeeMyPlant({
   isModalVisible,
   setModalVisible,
+  plantItem,
 }: SeeMyPlantProps) {
   const theme = useTheme();
 
@@ -40,8 +43,8 @@ export function SeeMyPlant({
         <S.ModalContainer>
           <S.Header>
             <S.TextContainer>
-              <S.Title>Orelha de Coelho</S.Title>
-              <S.SubTitle>Apelido</S.SubTitle>
+              <S.Title>{plantItem.name}</S.Title>
+              <S.SubTitle>{plantItem.surname}</S.SubTitle>
             </S.TextContainer>
             <S.InfoContainer>
               <S.InfoButton>

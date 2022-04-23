@@ -41,6 +41,7 @@ export function CardMyPlants({ plantItem }: CardMyPlantsType) {
       <SeeMyPlant
         isModalVisible={isModalVisible}
         setModalVisible={() => setModalVisible(false)}
+        plantItem={plantItem}
       />
     </>
   );
