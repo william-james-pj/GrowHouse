@@ -1,11 +1,21 @@
 import styled from "styled-components/native";
 import { fonts } from "../../styles/fonts";
 
+import TrashSvg from "../../assets/svg/trash.svg";
+
 export const Wrapper = styled.View`
   width: 100%;
   height: 120px;
   border-radius: 8px;
+  background: ${(props) => props.theme.colors.background};
+  overflow: hidden;
+`;
+
+export const ItemContainer = styled.View`
   background: ${(props) => props.theme.colors.card};
+  width: 100%;
+  height: 120px;
+  border-radius: 8px;
   overflow: hidden;
 `;
 
@@ -62,3 +72,23 @@ export const Image = styled.Image`
   width: 90px;
   height: 90px;
 `;
+
+export const DeleteBox = styled.View`
+  flex: 1;
+  background: ${(props) => props.theme.colors.red};
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0 25px;
+`;
+
+export const DeleteBoxText = styled.Text`
+  color: ${(props) => props.theme.colors.white};
+  font-size: ${fonts.size.sm};
+  font-family: ${fonts.type.text700};
+`;
+
+export const Trash = styled(TrashSvg).attrs((props) => ({
+  fill: props.theme.colors.white,
+  width: 17,
+  height: 20,
+}))``;

@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useState, useEffect } from "react";
 
 import { database } from "../services/firebase";
-import { ref, child, set, get } from "firebase/database";
+import { ref, child, set, get, remove } from "firebase/database";
 import { useAuth } from "../hooks/useAuth";
 
 import { MyPlantsType } from "../@types/types";
@@ -10,6 +10,7 @@ type MyPlantsContextType = {
   loadMyPlants: () => void;
   myPlantsData: MyPlantsType[];
   addNewPlat: (newPlant: MyPlantsType) => void;
+  removePlant: (idPlant: string) => void;
 };
 
 type MyPlantsContextProviderProps = {
@@ -66,6 +67,15 @@ export function MyPlantsContextProvider(props: MyPlantsContextProviderProps) {
     setMyPlants(aux);
   };
 
+  const removePlant = async (idPlant: string) => {
+    const userId = user?.id || "Error";
+
+    const dbRef = ref(database, `Users/${userId}/${idPlant}`);
+    await remove(dbRef).then(() => {
+      loadMyPlants();
+    });
+  };
+
   useEffect(() => {}, []);
 
   return (
@@ -74,6 +84,7 @@ export function MyPlantsContextProvider(props: MyPlantsContextProviderProps) {
         loadMyPlants,
         myPlantsData,
         addNewPlat,
+        removePlant,
       }}
     >
       {props.children}

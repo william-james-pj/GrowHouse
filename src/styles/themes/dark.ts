@@ -11,7 +11,7 @@ export const dark = {
     disabled: "rgba(92, 92, 92, 1)",
 
     white: "#FFF",
-    red: "rgba(231, 76, 60, 1)",
+    red: "rgba(181, 64, 64, 1)",
 
     blueLight: "rgba(89, 139, 191, 1)",
     blueDark: "rgba(234, 246, 254, 1)",
