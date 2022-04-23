@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FlatList } from "react-native";
 
 import { Header } from "../../components/Header";
@@ -13,14 +13,32 @@ import { DiscoverType } from "../../@types/types";
 import * as S from "./styles";
 
 export function Discover() {
-  const [searchText, setSearchText] = useState("");
   const { discoverData } = useDiscover();
+  const [searchText, setSearchText] = useState("");
+  const [filterData, setFilterData] = useState<DiscoverType[]>([]);
 
   const flatList = useRef<FlatList<DiscoverType>>(null);
 
   const renderRows = ({ item }: { item: DiscoverType }) => {
     return <CardDiscover discoverItem={item} />;
   };
+
+  const searchFilter = (text: string) => {
+    const newData = discoverData.filter((item) => {
+      const title = item.name.toUpperCase();
+      const textFilter = text.toUpperCase();
+
+      return title.indexOf(textFilter) > -1;
+    });
+    setFilterData(newData);
+    setSearchText(text);
+  };
+
+  useEffect(() => {
+    setFilterData(discoverData);
+
+    return () => {};
+  }, [discoverData]);
 
   return (
     <S.Wrapper>
@@ -29,7 +47,7 @@ export function Discover() {
         <S.SearchBarContainer>
           <SearchBar
             placeholder={"Pesquise pelo nome"}
-            onChangeText={setSearchText}
+            onChangeText={searchFilter}
             value={searchText}
           />
         </S.SearchBarContainer>
@@ -43,7 +61,7 @@ export function Discover() {
         showsVerticalScrollIndicator={false}
         numColumns={2}
         contentContainerStyle={{ paddingBottom: 25 }}
-        data={discoverData}
+        data={filterData}
         renderItem={renderRows}
         keyExtractor={(item) => item.id}
         ItemSeparatorComponent={() => <S.Separator></S.Separator>}

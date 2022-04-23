@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FlatList } from "react-native";
 
 import { Header } from "../../components/Header";
@@ -14,8 +14,9 @@ import { MyPlantsType } from "../../@types/types";
 import * as S from "./styles";
 
 export function MyPlants() {
-  const [searchText, setSearchText] = useState("");
   const { myPlantsData } = useMyPlants();
+  const [searchText, setSearchText] = useState("");
+  const [filterData, setFilterData] = useState<MyPlantsType[]>([]);
 
   const flatList = useRef<FlatList<MyPlantsType>>(null);
 
@@ -33,6 +34,24 @@ export function MyPlants() {
     );
   };
 
+  const searchFilter = (text: string) => {
+    const newData = myPlantsData.filter((item) => {
+      const title = item.name.toUpperCase();
+      const surname = item.surname.toUpperCase();
+      const textFilter = text.toUpperCase();
+
+      return title.indexOf(textFilter) > -1 || surname.indexOf(textFilter) > -1;
+    });
+    setFilterData(newData);
+    setSearchText(text);
+  };
+
+  useEffect(() => {
+    setFilterData(myPlantsData);
+
+    return () => {};
+  }, [myPlantsData]);
+
   return (
     <>
       <S.Wrapper>
@@ -41,7 +60,7 @@ export function MyPlants() {
           <S.SearchBarContainer>
             <SearchBar
               placeholder={"Pesquise pelo nome"}
-              onChangeText={setSearchText}
+              onChangeText={searchFilter}
               value={searchText}
             />
           </S.SearchBarContainer>
@@ -54,7 +73,7 @@ export function MyPlants() {
           removeClippedSubviews={false}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 25 }}
-          data={myPlantsData}
+          data={filterData}
           renderItem={renderRows}
           keyExtractor={(item) => item.id}
           ItemSeparatorComponent={() => <S.Separator></S.Separator>}

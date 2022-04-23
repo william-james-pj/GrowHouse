@@ -66,9 +66,7 @@ export function MyPlantsContextProvider(props: MyPlantsContextProviderProps) {
     setMyPlants(aux);
   };
 
-  useEffect(() => {
-    loadMyPlants();
-  }, ["", myPlantsData]);
+  useEffect(() => {}, []);
 
   return (
     <MyPlantsContext.Provider
