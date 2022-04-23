@@ -29,6 +29,10 @@ type UserType = {
 
 type MyPlantsType = {
   id: string;
+  name: string;
+  surname: string;
+  imageUrl: string;
+  plantId: string;
 };
 
 type DiscoverType = {

@@ -1,3 +1,4 @@
+import { BottomTabBarButtonProps } from "@react-navigation/bottom-tabs";
 import React from "react";
 
 import { Path } from "react-native-svg";
@@ -5,20 +6,15 @@ import PlusSVG from "../../../assets/svg/Plus.svg";
 
 import * as S from "./styles";
 
-interface FloatingButtonProps {
+interface FloatingButtonProps extends BottomTabBarButtonProps {
   bgColor: string;
-  navigate: () => void;
 }
 
-export function FloatingButton({ bgColor, navigate }: FloatingButtonProps) {
-  const changeClick = () => {
-    navigate();
-  };
-
+export function FloatingButton({ bgColor, onPress }: FloatingButtonProps) {
   return (
     <S.View>
       <SvgBackground color={bgColor} />
-      <S.TouchableOpacity onPress={changeClick}>
+      <S.TouchableOpacity onPress={onPress}>
         <S.ActionButtonView>
           <PlusSVG />
         </S.ActionButtonView>

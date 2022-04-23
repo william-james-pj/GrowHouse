@@ -1,10 +1,13 @@
 import React from "react";
 
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 import { ColorModeContext } from "./src/contexts/ColorModeContext";
 import { AuthContextProvider } from "./src/contexts/AuthContext";
 import { MyPlantsContextProvider } from "./src/contexts/MyPlantsContext";
 import { DiscoverContextProvider } from "./src/contexts/DiscoverContext";
 import { DiscoverSelectedContextProvider } from "./src/contexts/DiscoverSelectedContext";
+import { OpenModalAddProvider } from "./src/contexts/OpenModalAddContext";
 
 import { useFonts } from "expo-font";
 import {
@@ -18,7 +21,6 @@ import AppLoading from "expo-app-loading";
 import { Routes } from "./src/routes";
 
 import { LogBox } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 LogBox.ignoreLogs(["Setting a timer"]);
 
 export default function App() {
@@ -38,9 +40,11 @@ export default function App() {
         <MyPlantsContextProvider>
           <DiscoverContextProvider>
             <DiscoverSelectedContextProvider>
-              <GestureHandlerRootView style={{ flex: 1 }}>
-                <Routes />
-              </GestureHandlerRootView>
+              <OpenModalAddProvider>
+                <GestureHandlerRootView style={{ flex: 1 }}>
+                  <Routes />
+                </GestureHandlerRootView>
+              </OpenModalAddProvider>
             </DiscoverSelectedContextProvider>
           </DiscoverContextProvider>
         </MyPlantsContextProvider>

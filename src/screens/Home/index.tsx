@@ -4,6 +4,7 @@ import { Header } from "../../components/Header";
 import { BoxData } from "../../components/BoxData";
 
 import { useDiscover } from "../../hooks/useDiscover";
+import { useMyPlants } from "../../hooks/useMyPlants";
 import { useTheme } from "styled-components";
 
 import { currentTime } from "../../utils/currentTime";
@@ -17,6 +18,7 @@ export function Home() {
 
   const [switchIsActive, setSwitchIsActive] = useState(true);
   const { loadData } = useDiscover();
+  const { loadMyPlants } = useMyPlants();
 
   const pressSwitch = () => {
     setSwitchIsActive(!switchIsActive);
@@ -24,6 +26,7 @@ export function Home() {
 
   useEffect(() => {
     loadData();
+    loadMyPlants();
 
     return () => {};
   }, []);

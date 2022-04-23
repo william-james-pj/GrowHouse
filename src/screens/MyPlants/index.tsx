@@ -5,6 +5,7 @@ import { Header } from "../../components/Header";
 import { SearchBar } from "../../components/SearchBar";
 import { Filter } from "../../components/Filter";
 import { CardMyPlants } from "../../components/CardMyPlants";
+import { ModalAdd } from "./ModalAdd";
 
 import { useMyPlants } from "../../hooks/useMyPlants";
 
@@ -19,7 +20,7 @@ export function MyPlants() {
   const flatList = useRef<FlatList<MyPlantsType>>(null);
 
   const renderRows = ({ item }: { item: MyPlantsType }) => {
-    return <CardMyPlants />;
+    return <CardMyPlants plantItem={item} />;
   };
 
   const listEmpty = () => {
@@ -33,32 +34,35 @@ export function MyPlants() {
   };
 
   return (
-    <S.Wrapper>
-      <Header title={"Minhas plantas"} />
-      <S.SearchContainer>
-        <S.SearchBarContainer>
-          <SearchBar
-            placeholder={"Pesquise pelo nome"}
-            onChangeText={setSearchText}
-            value={searchText}
-          />
-        </S.SearchBarContainer>
-        <S.FilterContainer>
-          <Filter />
-        </S.FilterContainer>
-      </S.SearchContainer>
-      <FlatList
-        ref={flatList}
-        removeClippedSubviews={false}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 25 }}
-        data={myPlantsData}
-        renderItem={renderRows}
-        keyExtractor={(item) => item.id}
-        ItemSeparatorComponent={() => <S.Separator></S.Separator>}
-        ListFooterComponent={() => <S.FooterView></S.FooterView>}
-        ListEmptyComponent={listEmpty}
-      />
-    </S.Wrapper>
+    <>
+      <S.Wrapper>
+        <Header title={"Minhas plantas"} />
+        <S.SearchContainer>
+          <S.SearchBarContainer>
+            <SearchBar
+              placeholder={"Pesquise pelo nome"}
+              onChangeText={setSearchText}
+              value={searchText}
+            />
+          </S.SearchBarContainer>
+          <S.FilterContainer>
+            <Filter />
+          </S.FilterContainer>
+        </S.SearchContainer>
+        <FlatList
+          ref={flatList}
+          removeClippedSubviews={false}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 25 }}
+          data={myPlantsData}
+          renderItem={renderRows}
+          keyExtractor={(item) => item.id}
+          ItemSeparatorComponent={() => <S.Separator></S.Separator>}
+          ListFooterComponent={() => <S.FooterView></S.FooterView>}
+          ListEmptyComponent={listEmpty}
+        />
+      </S.Wrapper>
+      <ModalAdd />
+    </>
   );
 }

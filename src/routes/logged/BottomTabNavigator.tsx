@@ -17,11 +17,11 @@ import { Home } from "../../screens/Home";
 import { Settings } from "../../screens/Settings";
 import { MyPlantsStackNavigator } from "./MyPlantsStackNavigator";
 import { DiscoverStackNavigator } from "./DiscoverStackNavigator";
+import { useOpenModalAdd } from "../../hooks/useOpenModalAdd";
 
 export function BottomTabNavigator() {
   const theme = useTheme();
-
-  const navigateButtonAdd = () => {};
+  const { openModal } = useOpenModalAdd();
 
   const styles = StyleSheet.create({
     navigatorContainer: {
@@ -90,12 +90,16 @@ export function BottomTabNavigator() {
         component={EmptyScreen}
         options={{
           tabBarButton: (props) => (
-            <FloatingButton
-              bgColor={theme.colors.card}
-              navigate={navigateButtonAdd}
-            />
+            <FloatingButton bgColor={theme.colors.card} {...props} />
           ),
         }}
+        listeners={({ navigation }) => ({
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.navigate("MyPlantStack", { screen: "MyPlants" });
+            openModal(true);
+          },
+        })}
       />
 
       <Tab.Screen
