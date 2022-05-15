@@ -63,6 +63,6 @@ export const Separator = styled.View`
 
 export const FooterView = styled.View`
   background: transparent;
-  width: 20px;
+  width: 16px;
   height: 100%;
 `;

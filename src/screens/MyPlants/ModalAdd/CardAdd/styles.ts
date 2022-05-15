@@ -6,8 +6,7 @@ interface IsSelected {
 }
 
 export const Wrapper = styled.View<IsSelected>`
-  width: 45%;
-  min-width: 130px;
+  width: 130px;
   height: 180px;
   border-radius: 8px;
   background: ${(props) => props.theme.colors.card};
