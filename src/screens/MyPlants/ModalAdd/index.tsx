@@ -22,7 +22,7 @@ export type ItemSelected = {
 };
 
 export function ModalAdd() {
-  const { addNewPlat } = useMyPlants();
+  const { addNewPlat, sensorCode } = useMyPlants();
   const { isOpen, openModal } = useOpenModalAdd();
   const { discoverData } = useDiscover();
   const [surname, setSurname] = useState("");
@@ -49,9 +49,9 @@ export function ModalAdd() {
   };
 
   const addItem = async () => {
-    if (selectedItem === undefined || !surname.trim().length) {
-      return;
-    }
+    if (sensorCode === null) return;
+
+    if (selectedItem === undefined || !surname.trim().length) return;
 
     await addNewPlat({
       id: `${uuid.v4()}`,
@@ -59,6 +59,7 @@ export function ModalAdd() {
       surname: surname,
       imageUrl: selectedItem.imgUrl,
       plantId: selectedItem.name,
+      sensorId: sensorCode,
     });
 
     setSelectedItem(undefined);

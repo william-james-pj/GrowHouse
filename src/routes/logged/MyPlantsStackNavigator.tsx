@@ -8,6 +8,7 @@ import {
 import { MyPlants } from "../../screens/MyPlants";
 
 import { MyPlantStackParamList } from "../../@types/types";
+import { QRCodeRead } from "../../screens/QRCodeRead";
 
 const Stack = createStackNavigator<MyPlantStackParamList>();
 
@@ -29,6 +30,11 @@ export function MyPlantsStackNavigator() {
         options={{ headerShown: false }}
         name="MyPlants"
         component={MyPlants}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="QRCodeRead"
+        component={QRCodeRead}
       />
     </Stack.Navigator>
   );

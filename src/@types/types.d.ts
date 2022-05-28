@@ -14,7 +14,11 @@ type BottomTabStackParamList = {
 
 type MyPlantStackParamList = {
   MyPlants: undefined;
+  QRCodeRead: undefined;
 };
+
+type MyPlantStackNavigationProp =
+  NativeStackNavigationProp<MyPlantStackParamList>;
 
 type DiscoverParamList = {
   Discover: undefined;
@@ -33,6 +37,11 @@ type MyPlantsType = {
   surname: string;
   imageUrl: string;
   plantId: string;
+  sensorId: string;
+  values?: {
+    humidity: string;
+    reservoir: string;
+  };
 };
 
 type DiscoverType = {
@@ -49,3 +58,10 @@ type DiscoverType = {
   lighting: string;
   image: string;
 };
+
+// type SensorItemType = MyPlantsType & {
+//   values?: {
+//     humidity?: string;
+//     reservoi?: string;
+//   };
+// };

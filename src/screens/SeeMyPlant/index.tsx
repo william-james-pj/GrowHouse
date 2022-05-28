@@ -56,7 +56,7 @@ export function SeeMyPlant({
               </S.InfoButton>
             </S.InfoContainer>
           </S.Header>
-          <WaterIndicator />
+          <WaterIndicator value={plantItem.values?.humidity} />
           <S.SectionTitle>Irrigação automática</S.SectionTitle>
           <S.Content>
             <S.ClockContainer>

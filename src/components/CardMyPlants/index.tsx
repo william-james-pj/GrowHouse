@@ -48,7 +48,7 @@ export function CardMyPlants({ plantItem }: CardMyPlantsType) {
                 <S.TextContainer>
                   <S.Title>{plantItem.name}</S.Title>
                   <S.SubTitle>{plantItem.surname}</S.SubTitle>
-                  <WaterIndicator />
+                  <WaterIndicator value={plantItem.values?.humidity} />
                 </S.TextContainer>
                 <S.ImageContainer>
                   <S.ImageBox>

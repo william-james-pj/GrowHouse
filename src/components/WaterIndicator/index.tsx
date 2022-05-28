@@ -6,12 +6,16 @@ import WaterSVG from "../../assets/svg/Water.svg";
 
 import * as S from "./styles";
 
-export function WaterIndicator() {
+type WaterIndicatorProps = {
+  value?: string;
+};
+
+export function WaterIndicator({ value = "" }: WaterIndicatorProps) {
   const theme = useTheme();
   return (
     <S.Wrapper>
       <WaterSVG fill={theme.colors.blueDark} />
-      <S.Title>80%</S.Title>
+      <S.Title>{`${value}%`}</S.Title>
     </S.Wrapper>
   );
 }

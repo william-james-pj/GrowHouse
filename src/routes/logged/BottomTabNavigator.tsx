@@ -17,11 +17,10 @@ import { Home } from "../../screens/Home";
 import { Settings } from "../../screens/Settings";
 import { MyPlantsStackNavigator } from "./MyPlantsStackNavigator";
 import { DiscoverStackNavigator } from "./DiscoverStackNavigator";
-import { useOpenModalAdd } from "../../hooks/useOpenModalAdd";
+import { MyPlantStackNavigationProp } from "../../@types/types";
 
 export function BottomTabNavigator() {
   const theme = useTheme();
-  const { openModal } = useOpenModalAdd();
 
   const styles = StyleSheet.create({
     navigatorContainer: {
@@ -96,8 +95,7 @@ export function BottomTabNavigator() {
         listeners={({ navigation }) => ({
           tabPress: (e) => {
             e.preventDefault();
-            navigation.navigate("MyPlantStack", { screen: "MyPlants" });
-            openModal(true);
+            navigation.navigate("MyPlantStack", { screen: "QRCodeRead" });
           },
         })}
       />
