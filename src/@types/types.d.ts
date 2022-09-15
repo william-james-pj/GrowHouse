@@ -40,7 +40,8 @@ type MyPlantsType = {
   sensorId: string;
   values?: {
     humidity: string;
-    reservoir: string;
+    reservoir: boolean;
+    pump: boolean;
   };
 };
 

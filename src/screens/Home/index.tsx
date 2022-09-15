@@ -22,10 +22,20 @@ export function Home() {
   const [notSubTitle, setNotSubTitle] = useState("");
   const [reservoirValue, setReservoirValue] = useState("Sem sensor");
   const { loadData } = useDiscover();
-  const { myPlantsData, loadMyPlants } = useMyPlants();
+  const { myPlantsData, loadMyPlants, setPump } = useMyPlants();
 
   const pressSwitch = () => {
+    setPump();
     setSwitchIsActive(!switchIsActive);
+  };
+
+  const getPump = () => {
+    if (myPlantsData.length === 0) {
+      setSwitchIsActive(false);
+      return;
+    }
+
+    setSwitchIsActive(myPlantsData[0].values?.pump ?? false);
   };
 
   const getReservoir = () => {
@@ -36,20 +46,24 @@ export function Home() {
 
     let aux = myPlantsData[0].values?.reservoir;
 
-    if (!aux) return undefined;
+    if (aux === undefined) return undefined;
 
-    return parseFloat(aux);
+    return aux;
   };
 
   const setReservoir = () => {
     let value = getReservoir();
 
-    if (!value) {
+    if (value === undefined) {
       setReservoirValue("Sem sensor");
       return;
     }
 
-    setReservoirValue(`${value.toFixed(0)}%`);
+    if (value) {
+      setReservoirValue(`Cheio`);
+      return;
+    }
+    setReservoirValue(`Vazio`);
   };
 
   const getAverageHumidity = () => {
@@ -72,22 +86,20 @@ export function Home() {
     let reservoir = getReservoir();
     let humidity = getAverageHumidity();
 
-    if (!reservoir || humidity === 0) {
+    if (reservoir === undefined || humidity === 0) {
       setNotTitle("Nenhum sensor encontrado");
       setNotSubTitle("Seu jardim não está sendo monitorado");
       return;
     }
 
-    if (reservoir <= 10) {
+    if (!reservoir) {
       setNotTitle("Seu jardim está em perigo");
       setNotSubTitle("Nível do reservatório em estado crítico");
-    } else if (reservoir < 50) {
-      setNotTitle("Fique atento ao seu jardim");
-      setNotSubTitle("Nível do reservatório baixo");
-    } else {
-      setNotTitle("Nenhuma notificação");
-      setNotSubTitle("Seu jardim está perfeito");
+      return;
     }
+
+    setNotTitle("Nenhuma notificação");
+    setNotSubTitle("Seu jardim está perfeito");
   };
 
   const setHumidity = () => {
@@ -101,6 +113,7 @@ export function Home() {
   useEffect(() => {
     setHumidityAverage(setHumidity());
     setReservoir();
+    getPump();
     setNotification();
     return () => {};
   }, [myPlantsData]);

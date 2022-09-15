@@ -10,6 +10,7 @@ import { MyPlantsType } from "../@types/types";
 type MyPlantsContextType = {
   loadMyPlants: () => void;
   myPlantsData: MyPlantsType[];
+  setPump: () => void;
   addNewPlat: (newPlant: MyPlantsType) => void;
   removePlant: (idPlant: string) => void;
   sensorCode: string | null;
@@ -90,6 +91,19 @@ export function MyPlantsContextProvider(props: MyPlantsContextProviderProps) {
     }
   };
 
+  const setPump = async () => {
+    const dbRef = ref(database);
+
+    if (myPlantsData.length === 0) return;
+
+    if (myPlantsData[0].values?.pump === undefined) return;
+
+    let value = myPlantsData[0].values?.pump;
+    let id = myPlantsData[0].sensorId;
+
+    await set(child(dbRef, `Sensors/${id}/pump`), !value);
+  };
+
   const addNewPlat = async (newPlant: MyPlantsType) => {
     const dbRef = ref(database);
 
@@ -141,6 +155,7 @@ export function MyPlantsContextProvider(props: MyPlantsContextProviderProps) {
       value={{
         loadMyPlants,
         myPlantsData,
+        setPump,
         addNewPlat,
         removePlant,
         sensorCode,
